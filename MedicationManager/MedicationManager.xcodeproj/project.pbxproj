@@ -20,6 +20,7 @@
 		7995BE6425B60EB20009B354 /* MedicationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995BE6325B60EB20009B354 /* MedicationDetailViewController.swift */; };
 		7995BE6825B60F040009B354 /* MedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995BE6725B60F040009B354 /* MedicationTableViewCell.swift */; };
 		79FF7C6525B62FB000E3386E /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FF7C6425B62FB000E3386E /* DateFormatterExtension.swift */; };
+		79FF7C8125B7413C00E3386E /* TakenDate+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FF7C8025B7413C00E3386E /* TakenDate+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		7995BE6325B60EB20009B354 /* MedicationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDetailViewController.swift; sourceTree = "<group>"; };
 		7995BE6725B60F040009B354 /* MedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTableViewCell.swift; sourceTree = "<group>"; };
 		79FF7C6425B62FB000E3386E /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		79FF7C8025B7413C00E3386E /* TakenDate+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakenDate+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				33A61CB7258F2E6E00B62B2F /* MedicationManager.xcdatamodeld */,
 				7995BE5325B5FA1F0009B354 /* CoreDataStack.swift */,
 				7995BE5625B601500009B354 /* Medication+Convenience.swift */,
+				79FF7C8025B7413C00E3386E /* TakenDate+Convenience.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				7995BE6425B60EB20009B354 /* MedicationDetailViewController.swift in Sources */,
 				7995BE6825B60F040009B354 /* MedicationTableViewCell.swift in Sources */,
 				7995BE5425B5FA1F0009B354 /* CoreDataStack.swift in Sources */,
+				79FF7C8125B7413C00E3386E /* TakenDate+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
