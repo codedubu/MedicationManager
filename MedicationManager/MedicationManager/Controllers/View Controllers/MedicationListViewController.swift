@@ -12,7 +12,7 @@ class MedicationListViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
-// MARK: - Lifecycle Methods
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -31,7 +31,7 @@ class MedicationListViewController: UIViewController {
         if segue.identifier == "toMedicationDetailVC" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                   let destination = segue.destination as? MedicationDetailViewController else { return }
-            let medication = MedicationController.shared.medications[indexPath.row]
+            let medication = MedicationController.shared.sections[indexPath.section][indexPath.row]
             destination.medication = medication
         }
     }
@@ -42,18 +42,41 @@ extension MedicationListViewController: UITableViewDelegate {
 } // End of extension
 
 extension MedicationListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return MedicationController.shared.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MedicationController.shared.medications.count
+        return MedicationController.shared.sections[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "medicationCell", for: indexPath) as? MedicationTableViewCell else { return UITableViewCell() }
         
-        let medication = MedicationController.shared.medications[indexPath.row]
+        let medication = MedicationController.shared.sections[indexPath.section][indexPath.row]
         
-        cell.updateViews(medication: medication)
+        cell.delegate = self
+        cell.configure(with: medication)
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Not Taken"
+        } else {
+            return "Taken"
+        }
+    }
+    
+    
+} // End of extension
+
+extension MedicationListViewController: MedicationTakenDelegate {
+    func medicationWasTakenTapped(wasTaken: Bool, medication: Medication) {
+        MedicationController.shared.updateMedicationTakenStatus(medication: medication, wasTaken: wasTaken)
+        tableView.reloadData()
+    }
+    // tell my model controller to mark a medication as taken or not
 } // End of extension

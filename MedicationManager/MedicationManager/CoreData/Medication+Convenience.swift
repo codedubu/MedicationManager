@@ -13,5 +13,15 @@ extension Medication {
         self.init(context: context)
         self.name = name
         self.timeOfDay = timeOfDay
+        
+    }
+    
+    func wasTakenToday() -> Bool {
+        guard let _ = (takenDates as? Set<TakenDate>)?.first(where: { (takenDate) -> Bool in
+            guard let date = takenDate.date else { return false }
+            return Calendar.current.isDate(date, inSameDayAs: Date())
+        }) else { return false }
+        
+        return true
     }
 } // End of extension
