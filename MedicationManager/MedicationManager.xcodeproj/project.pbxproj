@@ -13,6 +13,8 @@
 		33A61CB9258F2E6E00B62B2F /* MedicationManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33A61CB7258F2E6E00B62B2F /* MedicationManager.xcdatamodeld */; };
 		33A61CBB258F2E7000B62B2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33A61CBA258F2E7000B62B2F /* Assets.xcassets */; };
 		33A61CBE258F2E7000B62B2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33A61CBC258F2E7000B62B2F /* LaunchScreen.storyboard */; };
+		7979B25A25B89B3A002F7C7E /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979B25925B89B3A002F7C7E /* NotificationScheduler.swift */; };
+		7979B25D25B8CE2D002F7C7E /* MoodSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979B25C25B8CE2D002F7C7E /* MoodSurveyViewController.swift */; };
 		7995BE5425B5FA1F0009B354 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995BE5325B5FA1F0009B354 /* CoreDataStack.swift */; };
 		7995BE5725B601500009B354 /* Medication+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995BE5625B601500009B354 /* Medication+Convenience.swift */; };
 		7995BE5B25B6045F0009B354 /* MedicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995BE5A25B6045F0009B354 /* MedicationController.swift */; };
@@ -32,6 +34,8 @@
 		33A61CBA258F2E7000B62B2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33A61CBD258F2E7000B62B2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33A61CBF258F2E7000B62B2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7979B25925B89B3A002F7C7E /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		7979B25C25B8CE2D002F7C7E /* MoodSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSurveyViewController.swift; sourceTree = "<group>"; };
 		7995BE5325B5FA1F0009B354 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7995BE5625B601500009B354 /* Medication+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Medication+Convenience.swift"; sourceTree = "<group>"; };
 		7995BE5A25B6045F0009B354 /* MedicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				7995BE5A25B6045F0009B354 /* MedicationController.swift */,
+				7979B25925B89B3A002F7C7E /* NotificationScheduler.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			children = (
 				7995BE6025B60EA50009B354 /* MedicationListViewController.swift */,
 				7995BE6325B60EB20009B354 /* MedicationDetailViewController.swift */,
+				7979B25C25B8CE2D002F7C7E /* MoodSurveyViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -237,8 +243,10 @@
 				33A61CAF258F2E6E00B62B2F /* AppDelegate.swift in Sources */,
 				79FF7C6525B62FB000E3386E /* DateFormatterExtension.swift in Sources */,
 				7995BE6125B60EA50009B354 /* MedicationListViewController.swift in Sources */,
+				7979B25A25B89B3A002F7C7E /* NotificationScheduler.swift in Sources */,
 				7995BE5B25B6045F0009B354 /* MedicationController.swift in Sources */,
 				33A61CB9258F2E6E00B62B2F /* MedicationManager.xcdatamodeld in Sources */,
+				7979B25D25B8CE2D002F7C7E /* MoodSurveyViewController.swift in Sources */,
 				33A61CB1258F2E6E00B62B2F /* SceneDelegate.swift in Sources */,
 				7995BE6425B60EB20009B354 /* MedicationDetailViewController.swift in Sources */,
 				7995BE6825B60F040009B354 /* MedicationTableViewCell.swift in Sources */,

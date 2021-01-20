@@ -10,6 +10,7 @@ import CoreData
 class MedicationController {
     // MARK: - Shared Instance
     static let shared = MedicationController()
+    let notificationScheduler = NotificationScheduler()
     
     // MARK: - Sourth of Truth
     var sections: [[Medication]] { [notTakenMeds, takenMeds] }
@@ -38,6 +39,7 @@ class MedicationController {
     func createMedication(name: String, timeOfDay: Date) {
         let newMed = Medication(name: name, timeOfDay: timeOfDay)
         notTakenMeds.append(newMed)
+        notificationScheduler.scheduleNotifications(medication: newMed)
         CoreDataStack.saveContext()
     }
     
@@ -56,7 +58,12 @@ class MedicationController {
     func updateMedication(medication: Medication, name: String, timeOfDay: Date) {
         medication.name = name
         medication.timeOfDay = timeOfDay
+        // When we update we will cancel the previous notification)
+        notificationScheduler.cancelNotification(medication: medication)
+        // Afterwards, we become prompted to schedule a new notifcation.
+        notificationScheduler.scheduleNotifications(medication: medication)
         CoreDataStack.saveContext()
+
     }
     
     // notTaken = [vc, vd, ve]
@@ -87,8 +94,16 @@ class MedicationController {
         CoreDataStack.saveContext()
     }
     // Delete
-    func deleteMedication() {
-        // HANDLE THIS TOMORROW
-        
+    func deleteMedication(medication: Medication) {
+        if let index = notTakenMeds.firstIndex(of: medication) {
+            notTakenMeds.remove(at: index)
+        } else if let index = takenMeds.firstIndex(of: medication) {
+            takenMeds.remove(at: index)
+        }
+        CoreDataStack.context.delete(medication)
+        notificationScheduler.cancelNotification(medication: medication)
+        CoreDataStack.saveContext()
+
+
     }
 } // End of class

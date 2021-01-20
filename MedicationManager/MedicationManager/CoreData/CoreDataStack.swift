@@ -18,7 +18,8 @@ enum CoreDataStack {
         }
         return container
     }()
-    
+
+
     static var context: NSManagedObjectContext { container.viewContext }
     
     static func saveContext() {

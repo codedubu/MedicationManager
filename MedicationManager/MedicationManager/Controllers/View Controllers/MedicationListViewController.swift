@@ -11,6 +11,8 @@ class MedicationListViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var moodSurveyButton: UIButton!
+    
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -25,6 +27,19 @@ class MedicationListViewController: UIViewController {
         tableView.reloadData()
         
     }
+    
+    
+    @IBAction func moodSurveyButtonTapped(_ sender: UIButton) {
+        guard let moodSurveyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "moodSurveyViewController") as? MoodSurveyViewController else { return }
+        
+        moodSurveyVC.modalPresentationStyle = .fullScreen
+        moodSurveyVC.delegate = self
+        
+        present(moodSurveyVC, animated: true, completion: nil)
+    }
+    
+    
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,6 +77,15 @@ extension MedicationListViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let medToDelete = MedicationController.shared.sections[indexPath.section][indexPath.row]
+            MedicationController.shared.deleteMedication(medication: medToDelete)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Not Taken"
@@ -69,7 +93,7 @@ extension MedicationListViewController: UITableViewDataSource {
             return "Taken"
         }
     }
-    
+        
     
 } // End of extension
 
@@ -80,3 +104,21 @@ extension MedicationListViewController: MedicationTakenDelegate {
     }
     // tell my model controller to mark a medication as taken or not
 } // End of extension
+
+extension MedicationListViewController: MoodSurveyViewControllerDelegate {
+    func emojiSelected(emoji: String) {
+        moodSurveyButton.setTitle(emoji, for: .normal)
+    }
+        
+//
+//                if emoji == "😝" {
+//
+//                } else if emoji == "🤨" {
+//                    print("hmmm.")
+//                } else {
+//                    print("naw son...")
+//                }
+    
+    
+    
+}

@@ -9,11 +9,11 @@ import CoreData
     
 extension Medication {
     
-    @discardableResult convenience init(name: String, timeOfDay: Date, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(name: String, timeOfDay: Date, id: String = UUID().uuidString, context: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.name = name
         self.timeOfDay = timeOfDay
-        
+        self.id = id
     }
     
     func wasTakenToday() -> Bool {
